@@ -3,7 +3,7 @@
 
 pkgname=qcom-fastcv-binaries
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualcomm FastCV computer vision library (prebuilt binary)"
 arch=('aarch64')
 url="https://softwarecenter.qualcomm.com"
@@ -38,6 +38,18 @@ package() {
       install -Dm755 "$_so" "$pkgdir/$_so"
     done
   done
+
+  # FastRPC 1.0.4 uses the last matching machine configuration, not a merge.
+  # Keep each board's firmware search path and add its v68 libraries.
+  # FastCV's ADSP_LIBRARY_PATH selection is not used by FastRPC here.
+  install -dm755 "$pkgdir/usr/share/qcom/conf.d"
+  cat > "$pkgdir/usr/share/qcom/conf.d/qcom-fastcv-binaries.yaml" <<'EOF'
+machines:
+  Radxa Dragon Q6A:
+    DSP_LIBRARY_PATH: "qcs6490/radxa/dragon-q6a/dsp;/usr/lib/dsp/cdsp/cv/v68/KODIAK"
+  Radxa Dragon Q8B:
+    DSP_LIBRARY_PATH: "sc8280xp/radxa/dragon-q8b/dsp;/usr/lib/dsp/cdsp/cv/v68/KODIAK"
+EOF
 
   # Headers
   install -Dm644 usr/include/fastcv/fastcv.h    "$pkgdir/usr/include/fastcv/fastcv.h"

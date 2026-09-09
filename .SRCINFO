@@ -1,7 +1,7 @@
 pkgbase = qcom-fastcv-binaries
 	pkgdesc = Qualcomm FastCV computer vision library (prebuilt binary)
 	pkgver = 1.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://softwarecenter.qualcomm.com
 	arch = aarch64
 	license = LicenseRef-Qualcomm-EULA
