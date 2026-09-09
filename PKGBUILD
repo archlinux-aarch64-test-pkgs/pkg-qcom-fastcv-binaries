@@ -2,7 +2,7 @@
 # Upstream: Qualcomm FastCV prebuilt binaries
 
 pkgname=qcom-fastcv-binaries
-pkgver=1.8.5
+pkgver=1.8.9
 pkgrel=1
 pkgdesc="Qualcomm FastCV computer vision library (prebuilt binary)"
 arch=('aarch64')
@@ -11,10 +11,10 @@ license=('LicenseRef-Qualcomm-EULA')
 depends=('qcom-fastrpc' 'glib2')
 options=('!strip')
 
-_datestamp=260222
+_datestamp=260805
 
-source=("https://qartifactory-edge.qualcomm.com/artifactory/qsc_releases/software/chip/component/computervision-fastcv.qclinux.0.1/${_datestamp}/prebuilt_yocto/${pkgname}_${pkgver}_armv8a.tar.gz")
-sha256sums=('61522651088c8fd210febe2911bd979784f08ad207013fe76e96851ac7c666b3')
+source=("https://qartifactory-edge.qualcomm.com/artifactory/qsc_releases/software/chip/component/computervision-fastcv.qclinux.0.1/${_datestamp}/prebuilt_yocto_master/${pkgname}_${pkgver}_armv8a.tar.gz")
+sha256sums=('06bbb3283f9a018b41d9ec79b347587453f24f7bc76b469f89a09142579e3b2e')
 
 package() {
   cd "$srcdir"
